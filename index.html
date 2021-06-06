@@ -118,12 +118,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -152,6 +152,107 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://ccxsuperlife.github.io/2021/06/06/spring-mvc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="蜗牛">
+      <meta itemprop="description" content="懂得分享，快乐才会加倍！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蜗牛">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/06/spring-mvc/" class="post-title-link" itemprop="url">spring mvc</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-06 14:01:59 / Modified: 14:40:31" itemprop="dateCreated datePublished" datetime="2021-06-06T14:01:59+08:00">2021-06-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring  MVC"></a>Spring  MVC</h1><p>Spring MVC是Spring Framework提供的Web组件，全称是Spring Web MVC，是⽬前主流的实现MVC设计模式的框架，提供前端路由映射、视图解析等功能。</p>
+<p>Java Web开发者必须要掌握的技术框架。</p>
+<h1 id="Spring-MVC功能"><a href="#Spring-MVC功能" class="headerlink" title="Spring MVC功能"></a>Spring MVC功能</h1><p>MVC：Controller（控制层）、Model（模型层）、View（视图层）</p>
+<p>流程：Controller接收客户端请求，调⽤相关业务层组件产出Model，或业务数据并返回给Controller，Controller再结合View完成业务数据的视图层渲染，并将结果响应给客户端，如下图所示。</p>
+<p><img src="/2021/06/06/spring-mvc/Snipaste_2021-06-06_14-31-16.png" alt="11"></p>
+<p>Spring MVC 对这套MVC流程进⾏封装，帮助开发者屏蔽底层代码，并且开放出相关接⼝供开发者调⽤，让MVC开发变得更加简单⽅便。</p>
+<h1 id="Spring-MVC实现原理"><a href="#Spring-MVC实现原理" class="headerlink" title="Spring MVC实现原理"></a>Spring MVC实现原理</h1><p>核⼼组件</p>
+<ul>
+<li><p>DispatcherServlet：前置控制器，负责调度其他组件的执⾏，可以降低不同组件之间的耦合性，是整个Spring MVC的核⼼模块。</p>
+</li>
+<li><p>Handler：处理器，完成具体的业务逻辑，相当于Servlet。</p>
+</li>
+<li><p>HandlerMapping：DispatcherServlet是通过HandlerMapping将请求映射到不同的Handler。</p>
+</li>
+<li><p>HandlerInterceptor：处理器拦截器，是⼀个接⼝，如果我们需要进⾏⼀些拦截处理，可以通过实现该接⼝完成。</p>
+</li>
+<li><p>HandlerExecutionChain：处理器执⾏链，包括两部分内容：Handler和HandlerInterceptor（系统会有⼀个默认的HandlerInterceptor，如果需要额外拦截处理，可以添加拦截器进⾏设置）。</p>
+</li>
+<li><p>HandlerAdapter：处理器适配器，Handler执⾏业务⽅法之前，需要进⾏⼀系列的操作包括表单的数据验证、数据类型的转换、将表单数据封装到POJO等，这⼀些列操作都是由HandlerAdapter完成，DispatcherServlet通过HandlerAdapter执⾏不同的Handler。</p>
+</li>
+<li><p>ModelAndView：封装了模型数据和视图信息，作为Handler的处理结果，返回给DispatcherServlet。</p>
+</li>
+<li><p>ViewResolver：视图解析器，DispatcherServlet通过它将逻辑视图解析为物理视图，最终将渲染的结果响应给客户端。</p>
+</li>
+</ul>
+<p>⼯作流程：</p>
+<p>1、客户端请求被DispatcherServlet接收。</p>
+<p>2、根据HandlerMapping映射到Handler。</p>
+<p>3、⽣成Handler和HandlerInterceptor。</p>
+<p>4、Handler和HandlerInterceptor以HandlerExecutionChain的形式⼀并返回给DispatcherServlet。</p>
+<p>5、DispatcherServlet通过HandlerAdpater调⽤Handler的⽅法完成业务逻辑处理。</p>
+<p>6、返回⼀个ModelAndView对象给DispatcherServlet。</p>
+<p>7、DispatcherServlet将获取的ModelAndView对象传给ViewResolver视图解析器，将逻辑视图解析成物理视图。</p>
+<p>8、ViewResolver返回⼀个View给DispatcherServlet。</p>
+<p>9、DispatcherServlet根据View进⾏视图渲染（将模型数据填充到视图中）。</p>
+<p>10、DispatcherServlet将渲染之后的视图响应给客户端。</p>
+<p><img src="/2021/06/06/spring-mvc/Snipaste_2021-06-06_14-39-39.png" alt="10"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
