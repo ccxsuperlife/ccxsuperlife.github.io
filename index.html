@@ -186,7 +186,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-06-06 14:01:59 / Modified: 14:43:11" itemprop="dateCreated datePublished" datetime="2021-06-06T14:01:59+08:00">2021-06-06</time>
+      <time title="Created: 2021-06-06 14:01:59 / Modified: 17:58:42" itemprop="dateCreated datePublished" datetime="2021-06-06T14:01:59+08:00">2021-06-06</time>
     </span>
 
   
@@ -209,33 +209,80 @@
 <ul>
 <li><p>DispatcherServlet：前置控制器，负责调度其他组件的执⾏，可以降低不同组件之间的耦合性，是整个Spring MVC的核⼼模块。</p>
 </li>
-<li><p>Handler：处理器，完成具体的业务逻辑，相当于Servlet。</p>
+<li><p>Handler：处理器，完成具体的业务逻辑，相当于<code>Servlet</code>。</p>
 </li>
-<li><p>HandlerMapping：DispatcherServlet是通过HandlerMapping将请求映射到不同的Handler。</p>
+<li><p>HandlerMapping：<code>DispatcherServlet</code>是通过<code>HandlerMapping</code>将请求映射到不同的<code>Handler</code>。</p>
 </li>
 <li><p>HandlerInterceptor：处理器拦截器，是⼀个接⼝，如果我们需要进⾏⼀些拦截处理，可以通过实现该接⼝完成。</p>
 </li>
-<li><p>HandlerExecutionChain：处理器执⾏链，包括两部分内容：Handler和HandlerInterceptor（系统会有⼀个默认的HandlerInterceptor，如果需要额外拦截处理，可以添加拦截器进⾏设置）。</p>
+<li><p>HandlerExecutionChain：处理器执⾏链，包括两部分内容：<code>Handler</code>和<code>HandlerInterceptor</code>（系统会有⼀个默认的<code>HandlerInterceptor</code>，如果需要额外拦截处理，可以添加拦截器进⾏设置）。</p>
 </li>
-<li><p>HandlerAdapter：处理器适配器，Handler执⾏业务⽅法之前，需要进⾏⼀系列的操作包括表单的数据验证、数据类型的转换、将表单数据封装到POJO等，这⼀些列操作都是由HandlerAdapter完成，DispatcherServlet通过HandlerAdapter执⾏不同的Handler。</p>
+<li><p>HandlerAdapter：处理器适配器，<code>Handler</code>执⾏业务⽅法之前，需要进⾏⼀系列的操作包括表单的数据验证、数据类型的转换、将表单数据封装到<code>POJO</code>等，这⼀系列列操作都是由<code>HandlerAdapter</code>完成，<code>DispatcherServlet</code>通过<code>HandlerAdapter</code>执⾏不同的<code>Handler</code>。</p>
 </li>
-<li><p>ModelAndView：封装了模型数据和视图信息，作为Handler的处理结果，返回给DispatcherServlet。</p>
+<li><p>ModelAndView：封装了模型数据和视图信息，作为<code>Handler</code>的处理结果，返回给<code>DispatcherServlet</code>。</p>
 </li>
-<li><p>ViewResolver：视图解析器，DispatcherServlet通过它将逻辑视图解析为物理视图，最终将渲染的结果响应给客户端。</p>
+<li><p>ViewResolver：视图解析器，<code>DispatcherServlet</code>通过它将逻辑视图解析为物理视图，最终将渲染的结果响应给客户端。</p>
 </li>
 </ul>
 <p>⼯作流程：</p>
-<p>1、客户端请求被DispatcherServlet接收。</p>
-<p>2、根据HandlerMapping映射到Handler。</p>
-<p>3、⽣成Handler和HandlerInterceptor。</p>
-<p>4、Handler和HandlerInterceptor以HandlerExecutionChain的形式⼀并返回给DispatcherServlet。</p>
-<p>5、DispatcherServlet通过HandlerAdpater调⽤Handler的⽅法完成业务逻辑处理。</p>
-<p>6、返回⼀个ModelAndView对象给DispatcherServlet。</p>
-<p>7、DispatcherServlet将获取的ModelAndView对象传给ViewResolver视图解析器，将逻辑视图解析成物理视图。</p>
-<p>8、ViewResolver返回⼀个View给DispatcherServlet。</p>
-<p>9、DispatcherServlet根据View进⾏视图渲染（将模型数据填充到视图中）。</p>
-<p>10、DispatcherServlet将渲染之后的视图响应给客户端。</p>
+<p>1、客户端请求被<code>DispatcherServlet</code>接收。</p>
+<p>2、根据<code>HandlerMapping</code>映射到<code>Handler</code>。</p>
+<p>3、⽣成<code>Handler</code>和<code>HandlerInterceptor</code>。</p>
+<p>4、<code>Handler</code>和<code>HandlerInterceptor</code>以<code>HandlerExecutionChain</code>的形式⼀并返回给<code>DispatcherServlet</code>。</p>
+<p>5、<code>DispatcherServlet</code>通过<code>HandlerAdpater</code>调⽤<code>Handler</code>的⽅法完成业务逻辑处理。</p>
+<p>6、返回⼀个<code>ModelAndView</code>对象给<code>DispatcherServlet</code>。</p>
+<p>7、<code>DispatcherServlet</code>将获取的<code>ModelAndView</code>对象传给<code>ViewResolver</code>视图解析器，将逻辑视图解析成物理视图。</p>
+<p>8、<code>ViewResolver</code>返回⼀个<code>View</code>给<code>DispatcherServlet</code>。</p>
+<p>9、<code>DispatcherServlet</code>根据View进⾏视图渲染（将模型数据填充到视图中）。</p>
+<p>10、<code>DispatcherServlet</code>将渲染之后的视图响应给客户端。</p>
 <p><img src="/2021/06/06/spring-mvc/Snipaste_2021-06-06_14-39-39.png" alt="10"></p>
+<h2 id="Spring-MVC-具体使用"><a href="#Spring-MVC-具体使用" class="headerlink" title="Spring MVC 具体使用"></a>Spring MVC 具体使用</h2><p>1、创建Maven⼯程，pom.xml。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- spring mvc --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.3.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在web.xml 中配置 Spring MVC 的 DispatcherServlet。</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3、springmvc.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml</span></span><br><span class="line"><span class="meta">        version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:mvc</span>=<span class="string">&quot;http://www.springframework.org/schema/mvc&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/mvc</span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 配置自动扫包 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.star&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 视图解析器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 前缀 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 后缀 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.jsp&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>4、创建Handler</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/index&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;接收到了请求&quot;</span>);</span><br><span class="line">        <span class="comment">//返回逻辑视图</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>流程梳理</p>
+<p>1、<code>DispatcherServlet</code>接收到URL请求<code>index</code>，结合<code>@RequestMapping(&quot;/index&quot;)</code>注解将该请求交给index业务⽅法进⾏处理。</p>
+<p>2、执⾏<code>index</code>业务⽅法，控制台打印⽇志，并且返回<code>&quot;index&quot;</code>字符串（逻辑视图）。</p>
+<p>3、结合<code>springmvc.xml</code>中的视图解析器配置，找到⽬标资源：<code>/index.jsp</code>，即根⽬录下的<code>index.jsp</code>⽂件，将该JSP资源返回给客户端完成响应。</p>
+<p><code>Spring MVC</code>环境搭建成功。</p>
+<h1 id="Spring-MVC常⽤注解"><a href="#Spring-MVC常⽤注解" class="headerlink" title="Spring MVC常⽤注解"></a>Spring MVC常⽤注解</h1><p><code>@RequestMappingSpring</code></p>
+<p> MVC通过<code>@RequestMapping</code>注解将URL请求与业务⽅法进⾏映射，在控制器的类定义处以及⽅法定义处都可以添加<code>@RequestMapping</code>，在类定义处添加相当于多了⼀层访问路径。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/hello&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/index&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;接收到了请求&quot;</span>);</span><br><span class="line">        <span class="comment">//返回逻辑视图</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/hello/index">http://localhost:8080/hello/index</a></p>
+<p>@RequestMapping常⽤参数</p>
+<ul>
+<li>value：指定URL请求的实际地址，是@RequestMapping的默认值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/index&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;接收到了请求&quot;</span>);</span><br><span class="line">    <span class="comment">//返回逻辑视图</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>method：指定请求的method类型，包括GET、POST、PUT、DELETE等。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/index&quot;,method = RequestMethod.POST)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;接收到了请求&quot;</span>);</span><br><span class="line">    <span class="comment">//返回逻辑视图</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>params：指定request请求中必须包含的参数值，若不包含，⽆法调⽤该⽅法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/index&quot;,method = RequestMethod.POST,params = &#123;&quot;id=1&quot;,&quot;name=lisi&quot;&#125;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;接收到了请求&quot;</span>);</span><br><span class="line">    <span class="comment">//返回逻辑视图</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码表示<code>request</code>请求中必须包含<code>name</code>和<code>id</code>两个参数，并且id的值必须为1，name的值必须为tom，才可调⽤，否则抛出400异常。</p>
+<h1 id="参数绑定"><a href="#参数绑定" class="headerlink" title="参数绑定"></a>参数绑定</h1><p>params是对URL请求参数进⾏限制，不满⾜条件的URL⽆法访问该⽅法，需要在业务⽅法中获取URL的参数值。</p>
+<p>1、在业务⽅法定义时声明参数列表。</p>
+<p>2、给参数列表添加<code>@RequestParam</code>注解进⾏绑定。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/index&quot;,method = RequestMethod.POST)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">(<span class="meta">@RequestParam(&quot;num&quot;)</span> Integer id,<span class="meta">@RequestParam(&quot;names&quot;)</span> String name)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;接收到了请求&quot;</span>);</span><br><span class="line">    <span class="comment">//返回逻辑视图</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Spring MVC 可以⾃动完成数据类型转换，该⼯作是由<code>HandlerAdapter</code>来完成的。</p>
 
       
     </div>
