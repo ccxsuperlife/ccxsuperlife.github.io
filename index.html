@@ -192,7 +192,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-09 22:03:00" itemprop="dateModified" datetime="2021-06-09T22:03:00+08:00">2021-06-09</time>
+        <time title="Modified: 2021-06-09 22:08:06" itemprop="dateModified" datetime="2021-06-09T22:08:06+08:00">2021-06-09</time>
       </span>
 
   
@@ -332,14 +332,14 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/baseType&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">baseType</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;id:&quot;</span>+id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>客户端HTTP请求中必须包含id参数，否则抛出500异常，因为id不能为null。</p>
-<p><img src="/2021/06/06/spring-mvc/blog\source_posts\spring-mvc\Snipaste_2021-06-09_16-35-10.png" alt="1"></p>
+<p><img src="/2021/06/06/spring-mvc/Snipaste_2021-06-09_16-35-10.png" alt="1"></p>
 <p>同时id的值必须为数值且必须为整数，否则抛出400异常。</p>
-<p><img src="/2021/06/06/spring-mvc/blog\source_posts\spring-mvc\Snipaste_2021-06-09_16-36-48.png" alt="2"></p>
+<p><img src="/2021/06/06/spring-mvc/Snipaste_2021-06-09_16-36-48.png" alt="2"></p>
 <p>包装类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/packageType&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">packageType</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;id:&quot;</span>+id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>如果HTTP请求中没有包含id参数，不会报错，id的值就是null，会直接返回id:null给客户端。</p>
-<p><img src="/2021/06/06/spring-mvc/blog\source_posts\spring-mvc\Snipaste_2021-06-09_17-07-00.png"></p>
+<p><img src="/2021/06/06/spring-mvc/Snipaste_2021-06-09_17-07-00.png" alt="100"></p>
 <p>可以给参数列表添加@RequestParam注解，可以对参数进⾏相关设置。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/packageType&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">packageType</span><span class="params">(<span class="meta">@RequestParam(value = &quot;id&quot;,required = true,defaultValue = &quot;0&quot;)</span> Integer id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;id:&quot;</span>+id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
